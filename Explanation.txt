@@ -1,0 +1,14 @@
+We are going to be creating three containers for our project:
+1. WordPress
+2. MySQL
+3. phpmyadmin
+They will all be defined under the services field in our YAML configuration file.
+
+WordPress container
+This is the container that will house the WordPress application. Think of this as a separate stand-alone machine. This is also the machine you will hit to access the WordPress site.
+
+MySQL container
+Our database lives in this container. It won’t be exposed to the world like the WordPress container but we do want it to be reachable from the WordPress container. Docker Compose takes care of that for us by making sure that all the containers defined in a file are able to talk to each other unless we specify otherwise. We do not specify what port number to expose here because the port 3306 is already exposed by the mysql image.
+
+phpmyadmin container
+This service is not required to get our WordPress setup up and running but it is “a nice to have” as it presents us with an easy way to interact with the database.
