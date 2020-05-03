@@ -23,6 +23,6 @@ services:
       environment:
         PMA_HOST: mysql
       ports:
-        - 8081:80
+        - 8082:80
 volumes:
   mysql-data
