@@ -1,0 +1,28 @@
+version: ‘3.1’
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - mysql-data:/var/lib/mysql
+  wordpress:
+    image: wordpress:5.2.1
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      WORDPRESS_DB_PASSWORD: example
+    volumes:
+      - ./plugins/new-plugin:/var/www/html/wp-content/plugins/new-plugin
+    
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      restart: always
+      environment:
+        PMA_HOST: mysql
+      ports:
+        - 8081:80
+volumes:
+  mysql-data
